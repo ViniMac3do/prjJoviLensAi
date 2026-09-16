@@ -1,0 +1,100 @@
+/* ==========================================================================
+   JOVI LENS AI — DESIGN TOKENS (root de cores, tipografia, espaçamento)
+   Importe este arquivo ANTES de qualquer outro CSS custom (depois do Bootstrap).
+   Tudo aqui é var(--...) — nunca usar hex direto nos outros arquivos CSS.
+   ========================================================================== */
+
+:root {
+
+  /* ---- Marca: azul primário (extraído da logo) ---- */
+  --jovi-blue-500: #0047FF;   /* cor principal da marca (anel, botão primário) */
+  --jovi-blue-400: #2E6BFF;
+  --jovi-blue-300: #6E96FF;
+  --jovi-blue-600: #0038CC;
+  --jovi-blue-700: #002B99;
+
+  /* ---- Acento secundário (dá a "cara de IA" — usar com moderação) ---- */
+  --jovi-accent-500: #7B2FFF;  /* roxo — gradientes e destaques de IA */
+  --jovi-accent-400: #9D5CFF;
+  --jovi-cyan-400:   #2ED9FF; /* ciano — variação de gradiente, estados "ativo" */
+
+  /* ---- Gradiente de marca (títulos, métricas, ícones ativos) ---- */
+  --jovi-gradient-primary: linear-gradient(135deg, var(--jovi-blue-500) 0%, var(--jovi-accent-500) 100%);
+  --jovi-gradient-glow:    radial-gradient(circle, rgba(0,71,255,0.35) 0%, rgba(123,47,255,0.15) 45%, transparent 70%);
+
+  /* ---- Fundo (tema escuro, padrão do produto) ---- */
+  --jovi-bg-base:      #0A0E27;  /* fundo principal das telas do app */
+  --jovi-bg-elevated:  #12172E;  /* cards, painéis, navbar */
+  --jovi-bg-overlay:   #1A2038;  /* modais, dropdowns, hover de card */
+  --jovi-border-subtle: rgba(255, 255, 255, 0.08);
+  --jovi-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* ---- Texto ---- */
+  --jovi-text-primary:   #FFFFFF;
+  --jovi-text-secondary: #A8AFC7; /* cinza-azulado, texto de apoio */
+  --jovi-text-muted:     #6B7290;
+  --jovi-text-on-blue:   #FFFFFF;
+
+  /* ---- Estados semânticos ---- */
+  --jovi-success: #22C55E;
+  --jovi-warning: #F59E0B;
+  --jovi-danger:  #EF4444;
+  --jovi-info:    var(--jovi-cyan-400);
+
+  /* ---- Score fotográfico (gauge: vermelho -> amarelo -> verde) ---- */
+  --jovi-score-low:  var(--jovi-danger);
+  --jovi-score-mid:  var(--jovi-warning);
+  --jovi-score-high: var(--jovi-success);
+
+  /* ---- Tipografia ---- */
+  --jovi-font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --jovi-fw-regular: 400;
+  --jovi-fw-medium: 500;
+  --jovi-fw-semibold: 600;
+  --jovi-fw-bold: 700;
+
+  /* ---- Espaçamento (escala em rem, base 8px) ---- */
+  --jovi-space-1: 0.25rem;  /* 4px */
+  --jovi-space-2: 0.5rem;   /* 8px */
+  --jovi-space-3: 0.75rem;  /* 12px */
+  --jovi-space-4: 1rem;     /* 16px */
+  --jovi-space-5: 1.5rem;   /* 24px */
+  --jovi-space-6: 2rem;     /* 32px */
+  --jovi-space-8: 3rem;     /* 48px */
+  --jovi-space-10: 4rem;    /* 64px */
+
+  /* ---- Raio de borda ---- */
+  --jovi-radius-sm: 8px;
+  --jovi-radius-md: 12px;
+  --jovi-radius-lg: 20px;
+  --jovi-radius-full: 999px;
+
+  /* ---- Sombras (para dar profundidade sutil aos cards) ---- */
+  --jovi-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.24);
+  --jovi-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.32);
+  --jovi-shadow-glow-blue: 0 0 32px rgba(0, 71, 255, 0.25);
+
+  /* ---- Transições ---- */
+  --jovi-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --jovi-duration-fast: 150ms;
+  --jovi-duration-base: 250ms;
+}
+
+/* Reset mínimo apoiado nos tokens acima — aplicar depois do Bootstrap */
+body {
+  background-color: var(--jovi-bg-base);
+  color: var(--jovi-text-primary);
+  font-family: var(--jovi-font-base);
+}
+
+a {
+  color: var(--jovi-blue-400);
+}
+
+/* Utilitário de texto com gradiente — usar em títulos e métricas-chave */
+.jovi-text-gradient {
+  background: var(--jovi-gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

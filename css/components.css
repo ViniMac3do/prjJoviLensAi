@@ -1,0 +1,150 @@
+/* ==========================================================================
+   JOVI LENS AI — NAV & FOOTER
+   Depende de root.css já carregado antes deste arquivo.
+   ========================================================================== */
+
+/* ---------------------------- NAVBAR ---------------------------- */
+
+.jovi-navbar {
+  background-color: rgba(10, 14, 39, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--jovi-border-subtle);
+  padding-top: var(--jovi-space-3);
+  padding-bottom: var(--jovi-space-3);
+}
+
+.jovi-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  text-decoration: none;
+}
+
+.jovi-navbar-logo {
+  display: block;
+}
+
+.jovi-navbar-brand-text {
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 1.1rem;
+  color: var(--jovi-text-primary);
+  letter-spacing: 0.01em;
+}
+
+.jovi-navbar-toggler {
+  border-color: var(--jovi-border-subtle);
+}
+
+.jovi-nav-links {
+  gap: var(--jovi-space-2);
+}
+
+.jovi-nav-link {
+  color: var(--jovi-text-secondary) !important;
+  font-weight: var(--jovi-fw-medium);
+  padding: var(--jovi-space-2) var(--jovi-space-4) !important;
+  border-radius: var(--jovi-radius-full);
+  transition: color var(--jovi-duration-fast) var(--jovi-ease),
+              background-color var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-nav-link:hover {
+  color: var(--jovi-text-primary) !important;
+  background-color: var(--jovi-bg-overlay);
+}
+
+/* Marcada via JS (include.js) comparando data-page do <body> com data-nav do link */
+.jovi-nav-link.active {
+  color: var(--jovi-text-primary) !important;
+  background-color: var(--jovi-bg-overlay);
+  box-shadow: inset 0 0 0 1px var(--jovi-border-strong);
+}
+
+.jovi-nav-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--jovi-radius-full);
+  background: var(--jovi-gradient-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 0.9rem;
+}
+
+.jovi-nav-profile.active .jovi-nav-profile-avatar {
+  box-shadow: 0 0 0 2px var(--jovi-bg-base), 0 0 0 4px var(--jovi-blue-500);
+}
+
+/* ---------------------------- FOOTER ---------------------------- */
+
+.jovi-footer {
+  background-color: var(--jovi-bg-elevated);
+  border-top: 1px solid var(--jovi-border-subtle);
+  padding: var(--jovi-space-8) 0 var(--jovi-space-5);
+  margin-top: var(--jovi-space-10);
+}
+
+.jovi-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  text-decoration: none;
+  color: var(--jovi-text-primary);
+  font-weight: var(--jovi-fw-semibold);
+  margin-bottom: var(--jovi-space-2);
+}
+
+.jovi-footer-tagline {
+  color: var(--jovi-text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.jovi-footer-heading {
+  color: var(--jovi-text-primary);
+  font-size: 0.8rem;
+  font-weight: var(--jovi-fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--jovi-space-3);
+}
+
+.jovi-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-footer-links a {
+  color: var(--jovi-text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-footer-links a:hover {
+  color: var(--jovi-text-primary);
+}
+
+.jovi-footer-team {
+  color: var(--jovi-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.jovi-footer-divider {
+  border-color: var(--jovi-border-subtle);
+  opacity: 1;
+  margin: var(--jovi-space-6) 0 var(--jovi-space-4);
+}
+
+.jovi-footer-copy {
+  color: var(--jovi-text-muted);
+  font-size: 0.8rem;
+}

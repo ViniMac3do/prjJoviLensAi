@@ -1,0 +1,44 @@
+<!--
+  NAV — JOVI Lens AI
+  Este arquivo é um PARTIAL: não abra ele sozinho no navegador, ele é injetado
+  nas páginas via assets/js/include.js (precisa rodar em servidor local, ver README).
+  O link com classe "active" deve ser ajustado manualmente em cada página
+  (data-page="..." no <body> controla isso automaticamente — ver include.js).
+-->
+<nav class="navbar navbar-expand-lg jovi-navbar sticky-top">
+  <div class="container-fluid px-4">
+
+    <a class="navbar-brand jovi-navbar-brand" href="index.html">
+      <img src="assets/icons/icon-48x48.png" alt="JOVI Lens AI" class="jovi-navbar-logo" width="32" height="32">
+      <span class="jovi-navbar-brand-text">JOVI <span class="jovi-text-gradient">Lens AI</span></span>
+    </a>
+
+    <button class="navbar-toggler jovi-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#joviNavContent" aria-controls="joviNavContent" aria-expanded="false" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="joviNavContent">
+      <ul class="navbar-nav mx-auto jovi-nav-links">
+        <li class="nav-item">
+          <a class="nav-link jovi-nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link jovi-nav-link" data-nav="analise" href="analise.html">Análise</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link jovi-nav-link" data-nav="edicao" href="edicao.html">Edição</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link jovi-nav-link" data-nav="compartilhar" href="compartilhar.html">Compartilhar</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center jovi-nav-actions">
+        <a href="perfil.html" class="jovi-nav-profile" data-nav="perfil" aria-label="Perfil">
+          <span class="jovi-nav-profile-avatar">V</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
