@@ -1,0 +1,417 @@
+/* ==========================================================================
+   JOVI LENS AI — ESTILOS DA TELA DE ANÁLISE (analise.css)
+   Regra: Uso exclusivo de tokens definidos em root.css (sem hex direto).
+   ========================================================================== */
+
+/* Container Principal */
+.jovi-analysis-section {
+  min-height: calc(100vh - 160px);
+}
+
+.jovi-page-header {
+  margin-bottom: var(--jovi-space-6);
+}
+
+.jovi-page-title {
+  font-size: 2rem;
+  font-weight: var(--jovi-fw-bold);
+  color: var(--jovi-text-primary);
+  margin-bottom: var(--jovi-space-2);
+  letter-spacing: -0.02em;
+}
+
+.jovi-page-subtitle {
+  color: var(--jovi-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Card Principal da Foto */
+.jovi-card-analysis {
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--jovi-shadow-md);
+  transition: border-color var(--jovi-duration-base) var(--jovi-ease);
+}
+
+/* Estágio da Imagem */
+.jovi-image-stage {
+  position: relative;
+  background-color: var(--jovi-bg-base);
+  min-height: 380px;
+  max-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.jovi-analysis-img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+/* Grade da Regra dos Terços */
+.jovi-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--jovi-duration-base) var(--jovi-ease);
+}
+
+.jovi-grid-overlay.is-hidden {
+  opacity: 0;
+}
+
+.jovi-grid-line-v1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33.333%;
+  width: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+.jovi-grid-line-v2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 66.666%;
+  width: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+.jovi-grid-line-h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 33.333%;
+  height: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+.jovi-grid-line-h2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 66.666%;
+  height: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+/* Pins Flutuantes Interativos sobre a Imagem */
+.jovi-pins-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity var(--jovi-duration-base) var(--jovi-ease);
+}
+
+.jovi-pins-container.is-hidden {
+  opacity: 0;
+}
+
+.jovi-pin-btn {
+  position: absolute;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  background-color: var(--jovi-bg-overlay);
+  color: var(--jovi-text-primary);
+  border: 1px solid var(--jovi-border-strong);
+  border-radius: var(--jovi-radius-full);
+  padding: var(--jovi-space-1) var(--jovi-space-3);
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: var(--jovi-shadow-sm);
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-1);
+}
+
+.jovi-pin-btn:hover {
+  background-color: var(--jovi-blue-600);
+  border-color: var(--jovi-blue-400);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.jovi-pin-btn.active {
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  border-color: var(--jovi-cyan-400);
+  box-shadow: var(--jovi-shadow-glow-blue);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.jovi-pin-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--jovi-radius-full);
+  background-color: var(--jovi-cyan-400);
+  display: inline-block;
+}
+
+.jovi-pin-btn.active .jovi-pin-dot {
+  background-color: var(--jovi-text-primary);
+}
+
+/* Barra Inferior da Foto (Controles) */
+.jovi-image-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--jovi-space-3) var(--jovi-space-5);
+  background-color: var(--jovi-bg-elevated);
+  border-top: 1px solid var(--jovi-border-subtle);
+  flex-wrap: wrap;
+  gap: var(--jovi-space-3);
+}
+
+.jovi-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  color: var(--jovi-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+}
+
+.jovi-toggle-wrapper input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--jovi-blue-500);
+  cursor: pointer;
+}
+
+.jovi-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 0.875rem;
+  padding: var(--jovi-space-2) var(--jovi-space-5);
+  border-radius: var(--jovi-radius-md);
+  text-decoration: none;
+  border: none;
+  box-shadow: var(--jovi-shadow-sm);
+  transition: transform var(--jovi-duration-fast) var(--jovi-ease),
+              box-shadow var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-cta:hover {
+  color: var(--jovi-text-on-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--jovi-shadow-glow-blue);
+}
+
+/* Painel Lateral (Score e Diagnóstico) */
+.jovi-sidebar-card {
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  padding: var(--jovi-space-6);
+  box-shadow: var(--jovi-shadow-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gauge SVG */
+.jovi-gauge-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--jovi-space-4);
+}
+
+.jovi-gauge-svg {
+  display: block;
+  overflow: visible;
+}
+
+.jovi-gauge-bg {
+  stroke: var(--jovi-border-strong);
+}
+
+.jovi-gauge-progress {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jovi-gauge-content {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.jovi-score-display {
+  font-size: 2.75rem;
+  font-weight: var(--jovi-fw-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.jovi-score-label {
+  font-size: 0.7rem;
+  font-weight: var(--jovi-fw-medium);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--jovi-text-muted);
+  margin-top: var(--jovi-space-1);
+}
+
+/* Mensagem Resumo da IA */
+.jovi-ai-summary-box {
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  margin-bottom: var(--jovi-space-5);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--jovi-space-3);
+}
+
+.jovi-ai-summary-icon {
+  flex-shrink: 0;
+  color: var(--jovi-cyan-400);
+  margin-top: 2px;
+}
+
+.jovi-ai-summary-text {
+  font-size: 0.85rem;
+  color: var(--jovi-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Lista de Sugestões por Eixo */
+.jovi-suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jovi-space-3);
+  margin-bottom: var(--jovi-space-4);
+}
+
+.jovi-suggestion-card {
+  width: 100%;
+  text-align: left;
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-suggestion-card:hover {
+  background-color: var(--jovi-bg-overlay);
+  border-color: var(--jovi-border-strong);
+}
+
+.jovi-suggestion-card.active {
+  background-color: var(--jovi-bg-overlay);
+  border-color: var(--jovi-blue-500);
+  box-shadow: inset 0 0 0 1px var(--jovi-blue-500), 0 4px 12px rgba(0, 71, 255, 0.15);
+}
+
+.jovi-suggestion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--jovi-space-1);
+}
+
+.jovi-suggestion-tag {
+  font-size: 0.72rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--jovi-blue-300);
+}
+
+.jovi-suggestion-card.active .jovi-suggestion-tag {
+  color: var(--jovi-cyan-400);
+}
+
+.jovi-suggestion-text {
+  font-size: 0.85rem;
+  color: var(--jovi-text-primary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Ferramenta Rápida de Troca de Foto */
+.jovi-quick-upload-bar {
+  margin-top: auto;
+  padding-top: var(--jovi-space-4);
+  border-top: 1px solid var(--jovi-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-btn-ghost {
+  background: transparent;
+  border: 1px dashed var(--jovi-border-strong);
+  color: var(--jovi-text-muted);
+  font-size: 0.8rem;
+  border-radius: var(--jovi-radius-sm);
+  padding: var(--jovi-space-2) var(--jovi-space-3);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  width: 100%;
+  text-align: center;
+}
+
+.jovi-btn-ghost:hover {
+  color: var(--jovi-text-primary);
+  border-color: var(--jovi-blue-400);
+  background-color: var(--jovi-bg-overlay);
+}
+
+/* Estado Vazio (quando não há foto) */
+.jovi-empty-state {
+  display: none;
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  padding: var(--jovi-space-10) var(--jovi-space-6);
+  text-align: center;
+}
+
+.jovi-empty-icon {
+  margin-bottom: var(--jovi-space-4);
+  color: var(--jovi-text-muted);
+}
+
+.jovi-empty-title {
+  font-size: 1.25rem;
+  font-weight: var(--jovi-fw-semibold);
+  color: var(--jovi-text-primary);
+  margin-bottom: var(--jovi-space-2);
+}
+
+.jovi-empty-desc {
+  color: var(--jovi-text-secondary);
+  font-size: 0.9rem;
+  max-width: 360px;
+  margin: 0 auto var(--jovi-space-5);
+}
