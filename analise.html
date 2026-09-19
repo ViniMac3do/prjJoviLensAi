@@ -22,151 +22,196 @@
   <!-- Nav Partial (injetado via include.js) -->
   <div data-include="nav"></div>
 
-  <!-- Conteúdo Principal -->
-  <main class="jovi-analysis-section py-4 py-md-5">
-    <div class="container-xl px-3 px-md-4">
+  <!-- Efeitos de Fundo Aurora -->
+  <div class="jovi-aurora-bg">
+    <div class="jovi-aurora-glow-1" aria-hidden="true"></div>
+    <div class="jovi-aurora-glow-2" aria-hidden="true"></div>
 
-      <!-- Cabeçalho da Página -->
-      <div class="jovi-page-header">
-        <h1 class="jovi-page-title">Análise da foto</h1>
-        <p class="jovi-page-subtitle">Diagnóstico em tempo real com base nos 3 eixos fotográficos da IA.</p>
-      </div>
+    <!-- Conteúdo Principal -->
+    <main class="jovi-analysis-section py-4 py-md-5">
+      <div class="container-xl px-3 px-md-4">
 
-      <!-- Estado com Foto Analisada -->
-      <div id="analysisContent" class="row g-4 align-items-stretch">
-
-        <!-- Coluna Esquerda: Visualizador da Imagem com Regra dos Terços e Pins -->
-        <div class="col-12 col-lg-8">
-          <div class="jovi-card-analysis h-100 d-flex flex-column">
-
-            <!-- Palco da Foto com Overlays -->
-            <div class="jovi-image-stage flex-grow-1" id="imageStage">
-              <img id="analysisImage" class="jovi-analysis-img" src="" alt="Foto analisada com sugestões da IA">
-
-              <!-- Grade da Regra dos Terços -->
-              <div class="jovi-grid-overlay" id="gridOverlay" aria-hidden="true">
-                <div class="jovi-grid-line-v1"></div>
-                <div class="jovi-grid-line-v2"></div>
-                <div class="jovi-grid-line-h1"></div>
-                <div class="jovi-grid-line-h2"></div>
-              </div>
-
-              <!-- Pins Interativos sobrepostos -->
-              <div class="jovi-pins-container" id="pinsContainer">
-                <!-- Injetados dinamicamente via analise.js -->
-              </div>
-            </div>
-
-            <!-- Toolbar Inferior do Card -->
-            <div class="jovi-image-toolbar">
-              <label class="jovi-toggle-wrapper">
-                <input type="checkbox" id="toggleSuggestions" checked>
-                <span>Mostrar sugestões sobre a imagem</span>
-              </label>
-
-              <a href="edicao.html" class="jovi-btn-cta">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 20h9"/>
-                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                </svg>
-                <span>Ir para edição</span>
-              </a>
-            </div>
-
+        <!-- Cabeçalho da Página -->
+        <div class="jovi-page-header">
+          <div class="jovi-badge-ai">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+            </svg>
+            <span>Inteligência Artificial Ativa</span>
           </div>
+          <h1 class="jovi-page-title">Análise da foto</h1>
+          <p class="jovi-page-subtitle">Diagnóstico em tempo real com base nos 3 eixos fotográficos da JOVI.</p>
         </div>
 
-        <!-- Coluna Direita: Score e Painel de Sugestões -->
-        <div class="col-12 col-lg-4">
-          <aside class="jovi-sidebar-card">
+        <!-- Conteúdo Principal da Análise -->
+        <div id="analysisContent" class="row g-4 align-items-stretch">
 
-            <!-- Medidor Gauge Circular (Score Fotográfico) -->
-            <div class="jovi-gauge-container">
-              <svg class="jovi-gauge-svg" width="190" height="112" viewBox="0 0 190 112">
-                <defs>
-                  <linearGradient id="joviGaugeGrad" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" style="stop-color: var(--jovi-blue-500);" />
-                    <stop offset="55%" style="stop-color: var(--jovi-accent-500);" />
-                    <stop offset="100%" style="stop-color: var(--jovi-cyan-400);" />
-                  </linearGradient>
-                </defs>
-                <!-- Trilha de fundo -->
-                <path class="jovi-gauge-bg"
-                      d="M 14 105 A 81 81 0 0 1 176 105"
-                      fill="none"
-                      stroke-width="10"
-                      stroke-linecap="round" />
-                <!-- Arco de progresso animado -->
-                <path id="gaugeProgress"
-                      class="jovi-gauge-progress"
-                      d="M 14 105 A 81 81 0 0 1 176 105"
-                      fill="none"
-                      stroke="url(#joviGaugeGrad)"
-                      stroke-width="10"
-                      stroke-linecap="round"
-                      stroke-dasharray="254.47"
-                      stroke-dashoffset="254.47" />
-              </svg>
+          <!-- Coluna Esquerda: Visualizador da Imagem com Regra dos Terços e Pins -->
+          <div class="col-12 col-lg-8">
+            <div class="jovi-card-analysis h-100 d-flex flex-column">
 
-              <div class="jovi-gauge-content">
-                <div id="scoreValue" class="jovi-score-display jovi-text-gradient">0.0</div>
-                <div class="jovi-score-label">Score fotográfico</div>
+              <!-- Barra Superior de Metadados -->
+              <div class="jovi-image-header">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="jovi-status-indicator"></span>
+                  <span class="jovi-meta-tag fw-semibold text-white">Análise Concluída</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="jovi-meta-tag d-none d-sm-inline">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    24mm &bull; f/2.8 &bull; 1/320s &bull; ISO 100
+                  </span>
+                  <span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill px-2">RGB / sRGB</span>
+                </div>
               </div>
-            </div>
 
-            <!-- Síntese da IA -->
-            <div class="jovi-ai-summary-box">
-              <span class="jovi-ai-summary-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+              <!-- Palco da Foto com Overlays -->
+              <div class="jovi-image-stage flex-grow-1" id="imageStage">
+                <img id="analysisImage" class="jovi-analysis-img" src="" alt="Foto analisada com sugestões da IA">
+
+                <!-- Grade da Regra dos Terços -->
+                <div class="jovi-grid-overlay" id="gridOverlay" aria-hidden="true">
+                  <div class="jovi-grid-line-v1"></div>
+                  <div class="jovi-grid-line-v2"></div>
+                  <div class="jovi-grid-line-h1"></div>
+                  <div class="jovi-grid-line-h2"></div>
+
+                  <!-- Interseções / Golden Points -->
+                  <div class="jovi-grid-target jovi-target-1"></div>
+                  <div class="jovi-grid-target jovi-target-2"></div>
+                  <div class="jovi-grid-target jovi-target-3"></div>
+                  <div class="jovi-grid-target jovi-target-4"></div>
+                </div>
+
+                <!-- Pins Interativos sobrepostos -->
+                <div class="jovi-pins-container" id="pinsContainer">
+                  <!-- Injetados dinamicamente via analise.js -->
+                </div>
+              </div>
+
+              <!-- Toolbar Inferior do Card -->
+              <div class="jovi-image-toolbar">
+                <label class="jovi-switch-label">
+                  <span class="jovi-switch">
+                    <input type="checkbox" id="toggleSuggestions" checked>
+                    <span class="jovi-slider"></span>
+                  </span>
+                  <span>Mostrar sugestões sobre a imagem</span>
+                </label>
+
+                <a href="edicao.html" class="jovi-btn-cta">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20h9"/>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                  </svg>
+                  <span>Ir para edição</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="jovi-cta-arrow">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Score e Painel de Sugestões -->
+          <div class="col-12 col-lg-4">
+            <aside class="jovi-sidebar-card">
+
+              <!-- Medidor Gauge Circular (Score Fotográfico) -->
+              <div class="jovi-gauge-container">
+                <svg class="jovi-gauge-svg" width="210" height="125" viewBox="0 0 210 125">
+                  <defs>
+                    <linearGradient id="joviGaugeGrad" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" style="stop-color: var(--jovi-blue-500);" />
+                      <stop offset="55%" style="stop-color: var(--jovi-accent-500);" />
+                      <stop offset="100%" style="stop-color: var(--jovi-cyan-400);" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Trilha de fundo -->
+                  <path class="jovi-gauge-bg"
+                        d="M 15 115 A 90 90 0 0 1 195 115"
+                        fill="none"
+                        stroke-width="11"
+                        stroke-linecap="round" />
+                  <!-- Arco de progresso animado -->
+                  <path id="gaugeProgress"
+                        class="jovi-gauge-progress"
+                        d="M 15 115 A 90 90 0 0 1 195 115"
+                        fill="none"
+                        stroke="url(#joviGaugeGrad)"
+                        stroke-width="11"
+                        stroke-linecap="round"
+                        stroke-dasharray="282.74"
+                        stroke-dashoffset="282.74" />
                 </svg>
-              </span>
-              <p class="jovi-ai-summary-text" id="aiSummaryText">
-                Boa base: a cena tem leitura clara. Com os ajustes abaixo o score pode subir cerca de 1 ponto.
-              </p>
-            </div>
 
-            <!-- Lista dos 3 Eixos de Sugestão -->
-            <div class="jovi-suggestions-list" id="suggestionsContainer">
-              <!-- Injetado dinamicamente via analise.js -->
-            </div>
+                <div class="jovi-gauge-content">
+                  <div class="jovi-score-number-wrap">
+                    <span id="scoreValue" class="jovi-score-display jovi-text-gradient">8.4</span>
+                    <span class="jovi-score-max">/ 10</span>
+                  </div>
+                  <div class="jovi-score-label">Score Fotográfico</div>
+                </div>
+              </div>
 
-            <!-- Upload rápido / troca de foto para testes -->
-            <div class="jovi-quick-upload-bar">
-              <label for="quickUploadInput" class="jovi-btn-ghost">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="17 8 12 3 7 8"/>
-                  <line x1="12" y1="3" x2="12" y2="15"/>
-                </svg>
-                Trocar foto de teste
-              </label>
-              <input type="file" id="quickUploadInput" accept="image/*" class="d-none">
-            </div>
+              <!-- Mini breakdown dos 3 eixos -->
+              <div class="jovi-subscores-bar">
+                <div class="jovi-subscore-item">
+                  <span class="jovi-subscore-val" id="subComposicao">8.8</span>
+                  <span class="jovi-subscore-lbl">Composição</span>
+                </div>
+                <div class="jovi-subscore-item border-start border-end border-secondary-subtle">
+                  <span class="jovi-subscore-val" id="subIluminacao">8.0</span>
+                  <span class="jovi-subscore-lbl">Iluminação</span>
+                </div>
+                <div class="jovi-subscore-item">
+                  <span class="jovi-subscore-val" id="subEnquadramento">8.4</span>
+                  <span class="jovi-subscore-lbl">Enquadr.</span>
+                </div>
+              </div>
 
-          </aside>
+              <!-- Síntese da IA -->
+              <div class="jovi-ai-summary-box">
+                <span class="jovi-ai-summary-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </span>
+                <p class="jovi-ai-summary-text" id="aiSummaryText">
+                  Boa base: a cena tem leitura clara. Com os ajustes abaixo o score pode subir cerca de 1 ponto.
+                </p>
+              </div>
+
+              <!-- Lista dos 3 Eixos de Sugestão -->
+              <div class="jovi-suggestions-list" id="suggestionsContainer">
+                <!-- Injetado dinamicamente via analise.js -->
+              </div>
+
+              <!-- Upload rápido / troca de foto para testes -->
+              <div class="jovi-quick-upload-bar">
+                <label for="quickUploadInput" class="jovi-btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                  Trocar foto de teste
+                </label>
+                <input type="file" id="quickUploadInput" accept="image/*" class="d-none">
+              </div>
+
+            </aside>
+          </div>
+
         </div>
 
       </div>
-
-      <!-- Estado Vazio Alternativo (caso não haja foto) -->
-      <div id="emptyState" class="jovi-empty-state">
-        <div class="jovi-empty-icon">
-          <svg width="56" height="56" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6.5" y="10.5" width="35" height="27" rx="5"></rect>
-            <circle cx="24" cy="24" r="7"></circle>
-            <path d="M13 17.5h3M32 32.5l6 5" stroke-dasharray="2 3"></path>
-          </svg>
-        </div>
-        <h2 class="jovi-empty-title">Nenhuma foto analisada ainda</h2>
-        <p class="jovi-empty-desc">Envie uma foto pelo Dashboard para receber a avaliação fotográfica completa da JOVI.</p>
-        <a href="dashboard.html" class="jovi-btn-cta">
-          Ir para o Dashboard
-        </a>
-      </div>
-
-    </div>
-  </main>
+    </main>
+  </div>
 
   <!-- Footer Partial (injetado via include.js) -->
   <div data-include="footer"></div>
