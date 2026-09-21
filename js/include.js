@@ -1,31 +1,15 @@
-/*
-  JOVI LENS AI — include.js
-  Injeta assets/partials/nav.html e footer.html nas divs com
-  [data-include="nav"] e [data-include="footer"].
-
-  IMPORTANTE: fetch() de arquivo local só funciona servindo o site por HTTP
-  (ex: extensão "Live Server" do VS Code, ou GitHub Pages). Abrir o .html
-  direto no navegador (file://) vai falhar por causa do CORS do navegador —
-  isso não é um bug do código, é restrição de segurança do próprio browser.
-
-  Uso em cada página:
-    <body data-page="dashboard">
-      <div data-include="nav"></div>
-      ... conteúdo da página ...
-      <div data-include="footer"></div>
-      <script src="assets/js/include.js"></script>
-    </body>
-*/
-
 async function joviIncludeHTML(selector, url) {
   const el = document.querySelector(selector);
-  if (!el) return;
+  if (!el) {
+    console.warn(`[include.js] Nenhum elemento encontrado para "${selector}" nesta página. Verifique se a <div ${selector.replace(/[\[\]]/g, "")}></div> existe no HTML.`);
+    return;
+  }
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Falha ao carregar ${url}: ${res.status}`);
     el.innerHTML = await res.text();
   } catch (err) {
-    console.error("[include.js]", err.message, "— rodando via file://? Use um servidor local (ex: Live Server).");
+    console.error("[include.js]", err.message);
   }
 }
 
@@ -41,8 +25,8 @@ function joviMarkActiveNav() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([
-    joviIncludeHTML('[data-include="nav"]', "assets/partials/nav.html"),
-    joviIncludeHTML('[data-include="footer"]', "assets/partials/footer.html"),
+    joviIncludeHTML('[data-include="nav"]', "/pages/components/nav.html"),
+    joviIncludeHTML('[data-include="footer"]', "/pages/components/footer.html"),
   ]);
   joviMarkActiveNav();
 });
