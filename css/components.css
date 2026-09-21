@@ -148,3 +148,34 @@
   color: var(--jovi-text-muted);
   font-size: 0.8rem;
 }
+
+/* ---------------------------- SLIDER (TELA DE EDIÇÃO) ---------------------------- */
+
+.custom-slider {
+  height: 4px;
+  background-color: var(--jovi-border-strong);
+  border-radius: var(--jovi-radius-full);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--jovi-radius-full);
+  background-color: var(--jovi-blue-500);
+  cursor: pointer;
+  border: 2px solid transparent;
+  /* Cria o brilho ao redor usando o RGB do jovi-blue-500 (#0047FF) com opacidade */
+  box-shadow: 0 0 0 4px rgba(0, 71, 255, 0.2); 
+  margin-top: -6px;
+}
+
+.custom-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+}
