@@ -1,0 +1,650 @@
+/* ==========================================================================
+   JOVI LENS AI — ESTILOS DA TELA DE COMPARTILHAR (compartilhar.css)
+   Regra: Uso exclusivo de tokens de root.css. Zero hex solto.
+   ========================================================================== */
+
+/* Efeito Aurora de fundo */
+.jovi-aurora-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.jovi-aurora-glow-a {
+  position: fixed;
+  top: -100px;
+  left: 10%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 71, 255, 0.13) 0%, rgba(123, 47, 255, 0.05) 55%, transparent 72%);
+  pointer-events: none;
+  filter: blur(48px);
+  z-index: 0;
+}
+
+.jovi-aurora-glow-b {
+  position: fixed;
+  top: 80px;
+  right: 2%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(123, 47, 255, 0.15) 0%, rgba(46, 217, 255, 0.04) 55%, transparent 72%);
+  pointer-events: none;
+  filter: blur(52px);
+  z-index: 0;
+}
+
+/* Seção principal */
+.jovi-share-section {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 160px);
+}
+
+/* Cabeçalho */
+.jovi-share-header {
+  margin-bottom: var(--jovi-space-6);
+}
+
+.jovi-badge-share {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-strong);
+  color: var(--jovi-success);
+  padding: var(--jovi-space-1) var(--jovi-space-3);
+  border-radius: var(--jovi-radius-full);
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--jovi-space-2);
+}
+
+.jovi-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--jovi-radius-full);
+  background-color: var(--jovi-success);
+  box-shadow: 0 0 8px var(--jovi-success);
+  display: inline-block;
+}
+
+.jovi-share-title {
+  font-size: 2.25rem;
+  font-weight: var(--jovi-fw-bold);
+  color: var(--jovi-text-primary);
+  margin-bottom: var(--jovi-space-1);
+  letter-spacing: -0.02em;
+}
+
+.jovi-share-subtitle {
+  color: var(--jovi-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.jovi-btn-sim-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background: var(--jovi-bg-overlay);
+  border: 1px dashed var(--jovi-border-strong);
+  color: var(--jovi-text-muted);
+  font-size: 0.8rem;
+  padding: var(--jovi-space-2) var(--jovi-space-3);
+  border-radius: var(--jovi-radius-md);
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-sim-toggle:hover {
+  color: var(--jovi-text-primary);
+  border-color: var(--jovi-blue-400);
+}
+
+/* Card da Foto */
+.jovi-photo-card {
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--jovi-shadow-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--jovi-duration-base) var(--jovi-ease);
+}
+
+.jovi-photo-card:hover {
+  border-color: var(--jovi-border-strong);
+}
+
+.jovi-photo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  border-bottom: 1px solid var(--jovi-border-subtle);
+  font-size: 0.8rem;
+}
+
+.jovi-photo-meta-left {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  color: var(--jovi-text-secondary);
+  font-weight: var(--jovi-fw-medium);
+}
+
+.jovi-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-1);
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-bold);
+  padding: 3px var(--jovi-space-3);
+  border-radius: var(--jovi-radius-full);
+  letter-spacing: 0.02em;
+}
+
+.jovi-photo-stage {
+  flex-grow: 1;
+  background: radial-gradient(circle at center, var(--jovi-bg-overlay) 0%, var(--jovi-bg-base) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  max-height: 520px;
+  overflow: hidden;
+  position: relative;
+}
+
+.jovi-share-img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Watermark overlay na imagem */
+.jovi-watermark {
+  position: absolute;
+  bottom: var(--jovi-space-3);
+  right: var(--jovi-space-3);
+  background: rgba(10, 14, 39, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--jovi-border-strong);
+  border-radius: var(--jovi-radius-sm);
+  padding: var(--jovi-space-1) var(--jovi-space-3);
+  font-size: 0.7rem;
+  font-weight: var(--jovi-fw-semibold);
+  color: var(--jovi-text-secondary);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-1);
+}
+
+.jovi-watermark-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--jovi-radius-full);
+  background: var(--jovi-gradient-primary);
+  display: inline-block;
+}
+
+/* Toolbar inferior do card da foto */
+.jovi-photo-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  border-top: 1px solid var(--jovi-border-subtle);
+  flex-wrap: wrap;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-photo-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-3);
+}
+
+.jovi-format-badge {
+  font-size: 0.75rem;
+  color: var(--jovi-text-muted);
+  font-weight: var(--jovi-fw-medium);
+}
+
+.jovi-btn-download-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 0.85rem;
+  padding: var(--jovi-space-2) var(--jovi-space-4);
+  border-radius: var(--jovi-radius-md);
+  text-decoration: none;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-download-sm:hover {
+  color: var(--jovi-text-on-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 71, 255, 0.4);
+}
+
+/* Painel Lateral (Sidebar) */
+.jovi-sidebar-share {
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  padding: var(--jovi-space-5);
+  box-shadow: var(--jovi-shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jovi-space-4);
+  height: 100%;
+}
+
+/* Títulos das seções */
+.jovi-section-title {
+  font-size: 1.05rem;
+  font-weight: var(--jovi-fw-semibold);
+  color: var(--jovi-text-primary);
+  margin: 0;
+}
+
+.jovi-section-label {
+  font-size: 0.72rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--jovi-text-muted);
+  margin-bottom: var(--jovi-space-2);
+}
+
+/* Seção de Legenda */
+.jovi-caption-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.jovi-caption-textarea {
+  width: 100%;
+  resize: none;
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-md);
+  color: var(--jovi-text-primary);
+  font-size: 0.875rem;
+  font-family: var(--jovi-font-base);
+  line-height: 1.5;
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  outline: none;
+  transition: border-color var(--jovi-duration-fast) var(--jovi-ease),
+              box-shadow var(--jovi-duration-fast) var(--jovi-ease);
+  min-height: 110px;
+}
+
+.jovi-caption-textarea:focus {
+  border-color: var(--jovi-blue-400);
+  box-shadow: 0 0 0 3px rgba(0, 71, 255, 0.15);
+}
+
+.jovi-char-count {
+  font-size: 0.75rem;
+  color: var(--jovi-text-muted);
+}
+
+.jovi-char-count.near-limit {
+  color: var(--jovi-warning);
+}
+
+.jovi-char-count.over-limit {
+  color: var(--jovi-danger);
+}
+
+/* Botão de cópia */
+.jovi-btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  color: var(--jovi-text-secondary);
+  font-size: 0.8rem;
+  font-weight: var(--jovi-fw-medium);
+  padding: var(--jovi-space-1) var(--jovi-space-3);
+  border-radius: var(--jovi-radius-sm);
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-copy:hover {
+  color: var(--jovi-text-primary);
+  border-color: var(--jovi-border-strong);
+}
+
+.jovi-btn-copy.copied {
+  color: var(--jovi-success);
+  border-color: var(--jovi-success);
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+/* Hashtags sugeridas */
+.jovi-hashtags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-hashtag {
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  color: var(--jovi-blue-300);
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-medium);
+  padding: var(--jovi-space-1) var(--jovi-space-2);
+  border-radius: var(--jovi-radius-full);
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  user-select: none;
+}
+
+.jovi-hashtag:hover {
+  background-color: rgba(0, 71, 255, 0.12);
+  border-color: var(--jovi-blue-500);
+  color: var(--jovi-blue-300);
+}
+
+.jovi-hashtag.selected {
+  background: var(--jovi-gradient-primary);
+  border-color: transparent;
+  color: var(--jovi-text-on-blue);
+}
+
+/* Grid de botões de Redes Sociais */
+.jovi-social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--jovi-space-3);
+}
+
+.jovi-social-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jovi-space-1);
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-3) var(--jovi-space-2);
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  font-family: var(--jovi-font-base);
+  text-align: center;
+  text-decoration: none;
+  color: var(--jovi-text-secondary);
+}
+
+.jovi-social-btn:hover {
+  border-color: var(--jovi-border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--jovi-shadow-sm);
+  color: var(--jovi-text-primary);
+}
+
+.jovi-social-btn.ready {
+  border-color: var(--jovi-success);
+  background-color: rgba(34, 197, 94, 0.08);
+}
+
+.jovi-social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--jovi-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+}
+
+.jovi-social-icon.instagram {
+  background: linear-gradient(135deg,
+    var(--social-instagram-start)  0%,
+    var(--social-instagram-mid-1) 25%,
+    var(--social-instagram-mid-2) 50%,
+    var(--social-instagram-mid-3) 75%,
+    var(--social-instagram-end)  100%
+  );
+}
+
+.jovi-social-icon.whatsapp {
+  background-color: var(--social-whatsapp);
+}
+
+.jovi-social-icon.facebook {
+  background-color: var(--social-facebook);
+}
+
+.jovi-social-icon.tiktok {
+  background: linear-gradient(135deg,
+    var(--social-tiktok-dark)  0%,
+    var(--social-tiktok-cyan) 50%,
+    var(--social-tiktok-red)  100%
+  );
+}
+
+.jovi-social-name {
+  font-size: 0.8rem;
+  font-weight: var(--jovi-fw-semibold);
+  color: var(--jovi-text-primary);
+}
+
+.jovi-social-desc {
+  font-size: 0.68rem;
+  color: var(--jovi-text-muted);
+}
+
+.jovi-social-confirm-msg {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--jovi-success);
+  font-weight: var(--jovi-fw-semibold);
+  margin: 0;
+}
+
+/* Botão de download principal */
+.jovi-btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jovi-space-2);
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 0.95rem;
+  font-family: var(--jovi-font-base);
+  padding: var(--jovi-space-3) var(--jovi-space-5);
+  border-radius: var(--jovi-radius-md);
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 71, 255, 0.35);
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-download:hover {
+  color: var(--jovi-text-on-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 71, 255, 0.55);
+}
+
+.jovi-btn-download .jovi-cta-arrow {
+  transition: transform var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-download:hover .jovi-cta-arrow {
+  transform: translateY(2px);
+}
+
+.jovi-btn-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jovi-space-2);
+  background: transparent;
+  border: 1px solid var(--jovi-border-subtle);
+  color: var(--jovi-text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--jovi-fw-medium);
+  padding: var(--jovi-space-2) var(--jovi-space-5);
+  border-radius: var(--jovi-radius-md);
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-link:hover {
+  color: var(--jovi-text-primary);
+  border-color: var(--jovi-border-strong);
+  background-color: var(--jovi-bg-overlay);
+}
+
+.jovi-nav-link-subtle {
+  color: var(--jovi-text-muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jovi-space-1);
+  transition: color var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-nav-link-subtle:hover {
+  color: var(--jovi-text-secondary);
+}
+
+.jovi-divider {
+  border: none;
+  border-top: 1px solid var(--jovi-border-subtle);
+  margin: 0;
+}
+
+/* Toast de confirmação */
+.jovi-toast {
+  position: fixed;
+  bottom: var(--jovi-space-6);
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-strong);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-3) var(--jovi-space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-3);
+  font-size: 0.875rem;
+  font-weight: var(--jovi-fw-medium);
+  color: var(--jovi-text-primary);
+  box-shadow: var(--jovi-shadow-md);
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: transform 0.3s var(--jovi-ease), opacity 0.3s var(--jovi-ease);
+  white-space: nowrap;
+}
+
+.jovi-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.jovi-toast-icon {
+  color: var(--jovi-success);
+}
+
+/* ========================================================== */
+/* ESTADO VAZIO — FIELMENTE IDÊNTICO AO PROTÓTIPO LOVABLE    */
+/* ========================================================== */
+.jovi-empty-container {
+  min-height: calc(100vh - 280px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jovi-empty-card {
+  width: 100%;
+  max-width: 960px;
+  min-height: 420px;
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  padding: var(--jovi-space-10) var(--jovi-space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--jovi-shadow-md);
+}
+
+.jovi-empty-icon {
+  margin-bottom: var(--jovi-space-4);
+  color: var(--jovi-text-muted);
+  opacity: 0.45;
+}
+
+.jovi-empty-msg {
+  font-size: 0.95rem;
+  color: var(--jovi-text-secondary);
+  margin-bottom: var(--jovi-space-5);
+  font-weight: var(--jovi-fw-regular);
+}
+
+.jovi-btn-empty-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 0.9rem;
+  padding: var(--jovi-space-2) var(--jovi-space-6);
+  border-radius: var(--jovi-radius-md);
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 71, 255, 0.35);
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-empty-primary:hover {
+  color: var(--jovi-text-on-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 71, 255, 0.55);
+}
+
+.jovi-btn-demo-link {
+  background: transparent;
+  border: none;
+  color: var(--jovi-cyan-400);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: opacity var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-demo-link:hover {
+  opacity: 0.8;
+}
