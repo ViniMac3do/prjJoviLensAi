@@ -17,16 +17,20 @@
     </body>
 */
 
-async function joviIncludeHTML(selector, url) {
+async function joviIncludeHTML(selector, paths) {
   const el = document.querySelector(selector);
   if (!el) return;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Falha ao carregar ${url}: ${res.status}`);
-    el.innerHTML = await res.text();
-  } catch (err) {
-    console.error("[include.js]", err.message, "— rodando via file://? Use um servidor local (ex: Live Server).");
+  const pathList = Array.isArray(paths) ? paths : [paths];
+  for (const url of pathList) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        el.innerHTML = await res.text();
+        return;
+      }
+    } catch (err) {}
   }
+  console.error(`[include.js] Falha ao carregar ${pathList.join(", ")} — rodando via file://? Use um servidor local (ex: Live Server).`);
 }
 
 function joviMarkActiveNav() {
@@ -41,8 +45,8 @@ function joviMarkActiveNav() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([
-    joviIncludeHTML('[data-include="nav"]', "assets/partials/nav.html"),
-    joviIncludeHTML('[data-include="footer"]', "assets/partials/footer.html"),
+    joviIncludeHTML('[data-include="nav"]', ["pages/components/nav.html", "assets/partials/nav.html"]),
+    joviIncludeHTML('[data-include="footer"]', ["pages/components/footer.html", "assets/partials/footer.html"]),
   ]);
   joviMarkActiveNav();
 });
