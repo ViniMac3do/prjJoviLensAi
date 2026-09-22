@@ -1,0 +1,619 @@
+/* ==========================================================================
+   JOVI LENS AI — ESTILOS PREMIUM DA TELA DE ANÁLISE (analise.css)
+   Regra: Uso exclusivo de tokens definidos em root.css (sem hex direto).
+   ========================================================================== */
+
+/* Background Aurora / Ambient Glow */
+.jovi-aurora-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.jovi-aurora-glow-1 {
+  position: absolute;
+  top: -80px;
+  left: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 71, 255, 0.14) 0%, rgba(123, 47, 255, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.jovi-aurora-glow-2 {
+  position: absolute;
+  top: 150px;
+  right: 5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(123, 47, 255, 0.16) 0%, rgba(46, 217, 255, 0.05) 55%, transparent 70%);
+  pointer-events: none;
+  filter: blur(50px);
+  z-index: 0;
+}
+
+/* Container Principal */
+.jovi-analysis-section {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 160px);
+}
+
+.jovi-page-header {
+  margin-bottom: var(--jovi-space-6);
+}
+
+.jovi-badge-ai {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-strong);
+  color: var(--jovi-cyan-400);
+  padding: var(--jovi-space-1) var(--jovi-space-3);
+  border-radius: var(--jovi-radius-full);
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--jovi-space-2);
+}
+
+.jovi-page-title {
+  font-size: 2.25rem;
+  font-weight: var(--jovi-fw-bold);
+  color: var(--jovi-text-primary);
+  margin-bottom: var(--jovi-space-1);
+  letter-spacing: -0.02em;
+}
+
+.jovi-page-subtitle {
+  color: var(--jovi-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Card Principal da Foto */
+.jovi-card-analysis {
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--jovi-shadow-md);
+  transition: border-color var(--jovi-duration-base) var(--jovi-ease);
+  position: relative;
+}
+
+.jovi-card-analysis:hover {
+  border-color: var(--jovi-border-strong);
+}
+
+/* Barra Superior de Metadados da Foto */
+.jovi-image-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  background-color: var(--jovi-bg-elevated);
+  border-bottom: 1px solid var(--jovi-border-subtle);
+  font-size: 0.8rem;
+  color: var(--jovi-text-muted);
+}
+
+.jovi-meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-1);
+  color: var(--jovi-text-secondary);
+}
+
+.jovi-status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--jovi-radius-full);
+  background-color: var(--jovi-success);
+  display: inline-block;
+  box-shadow: 0 0 8px var(--jovi-success);
+}
+
+/* Estágio da Imagem */
+.jovi-image-stage {
+  position: relative;
+  background: radial-gradient(circle at center, var(--jovi-bg-overlay) 0%, var(--jovi-bg-base) 100%);
+  min-height: 400px;
+  max-height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.jovi-analysis-img {
+  width: 100%;
+  max-height: 540px;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--jovi-duration-base) var(--jovi-ease);
+}
+
+/* Grade da Regra dos Terços */
+.jovi-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--jovi-duration-base) var(--jovi-ease);
+}
+
+.jovi-grid-overlay.is-hidden {
+  opacity: 0;
+}
+
+.jovi-grid-line-v1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33.333%;
+  width: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+.jovi-grid-line-v2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 66.666%;
+  width: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+.jovi-grid-line-h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 33.333%;
+  height: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+.jovi-grid-line-h2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 66.666%;
+  height: 1px;
+  background-color: var(--jovi-border-strong);
+}
+
+/* Interseções da Regra dos Terços (Pontos de Ouro) */
+.jovi-grid-target {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--jovi-cyan-400);
+  border-radius: var(--jovi-radius-full);
+  opacity: 0.45;
+}
+
+.jovi-target-1 { left: 33.333%; top: 33.333%; }
+.jovi-target-2 { left: 66.666%; top: 33.333%; }
+.jovi-target-3 { left: 33.333%; top: 66.666%; }
+.jovi-target-4 { left: 66.666%; top: 66.666%; }
+
+/* Pins Flutuantes Interativos */
+.jovi-pins-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity var(--jovi-duration-base) var(--jovi-ease);
+}
+
+.jovi-pins-container.is-hidden {
+  opacity: 0;
+}
+
+.jovi-pin-btn {
+  position: absolute;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  background: rgba(18, 23, 46, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--jovi-text-primary);
+  border: 1px solid var(--jovi-border-strong);
+  border-radius: var(--jovi-radius-full);
+  padding: var(--jovi-space-1) var(--jovi-space-3);
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-pin-btn:hover {
+  background-color: var(--jovi-bg-overlay);
+  border-color: var(--jovi-blue-400);
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow: var(--jovi-shadow-glow-blue);
+}
+
+.jovi-pin-btn.active {
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  border-color: var(--jovi-cyan-400);
+  box-shadow: 0 0 24px rgba(0, 71, 255, 0.65);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.jovi-pin-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--jovi-radius-full);
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 0.65rem;
+}
+
+.jovi-pin-btn.active .jovi-pin-icon-wrap {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Toolbar Inferior */
+.jovi-image-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--jovi-space-3) var(--jovi-space-5);
+  background-color: var(--jovi-bg-elevated);
+  border-top: 1px solid var(--jovi-border-subtle);
+  flex-wrap: wrap;
+  gap: var(--jovi-space-3);
+}
+
+/* Switch Estilizado */
+.jovi-switch-label {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-3);
+  color: var(--jovi-text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--jovi-fw-medium);
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+}
+
+.jovi-switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+}
+
+.jovi-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.jovi-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-strong);
+  transition: var(--jovi-duration-fast);
+  border-radius: var(--jovi-radius-full);
+}
+
+.jovi-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--jovi-text-secondary);
+  transition: var(--jovi-duration-fast);
+  border-radius: var(--jovi-radius-full);
+}
+
+.jovi-switch input:checked + .jovi-slider {
+  background-color: var(--jovi-blue-500);
+  border-color: var(--jovi-cyan-400);
+}
+
+.jovi-switch input:checked + .jovi-slider:before {
+  transform: translateX(16px);
+  background-color: var(--jovi-text-primary);
+}
+
+/* Botão de Ação CTA */
+.jovi-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+  background: var(--jovi-gradient-primary);
+  color: var(--jovi-text-on-blue);
+  font-weight: var(--jovi-fw-semibold);
+  font-size: 0.9rem;
+  padding: var(--jovi-space-2) var(--jovi-space-5);
+  border-radius: var(--jovi-radius-md);
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 71, 255, 0.35);
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-cta:hover {
+  color: var(--jovi-text-on-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 71, 255, 0.55);
+}
+
+.jovi-btn-cta .jovi-cta-arrow {
+  transition: transform var(--jovi-duration-fast) var(--jovi-ease);
+}
+
+.jovi-btn-cta:hover .jovi-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Painel Lateral (Sidebar) */
+.jovi-sidebar-card {
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  padding: var(--jovi-space-6);
+  box-shadow: var(--jovi-shadow-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Gauge SVG Circular */
+.jovi-gauge-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--jovi-space-3);
+}
+
+.jovi-gauge-svg {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 16px rgba(0, 71, 255, 0.35));
+}
+
+.jovi-gauge-bg {
+  stroke: var(--jovi-border-strong);
+}
+
+.jovi-gauge-progress {
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jovi-gauge-content {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.jovi-score-number-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.jovi-score-display {
+  font-size: 3rem;
+  font-weight: var(--jovi-fw-bold);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.jovi-score-max {
+  font-size: 1rem;
+  color: var(--jovi-text-muted);
+  font-weight: var(--jovi-fw-medium);
+}
+
+.jovi-score-label {
+  font-size: 0.72rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--jovi-text-muted);
+  margin-top: var(--jovi-space-1);
+}
+
+/* Mini Barra de Breakdown de Subscores */
+.jovi-subscores-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--jovi-space-2);
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-2) var(--jovi-space-3);
+  margin-bottom: var(--jovi-space-4);
+  text-align: center;
+}
+
+.jovi-subscore-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jovi-subscore-val {
+  font-size: 0.95rem;
+  font-weight: var(--jovi-fw-bold);
+  color: var(--jovi-text-primary);
+}
+
+.jovi-subscore-lbl {
+  font-size: 0.65rem;
+  color: var(--jovi-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mensagem Resumo da IA */
+.jovi-ai-summary-box {
+  background-color: var(--jovi-bg-overlay);
+  border: 1px solid var(--jovi-border-subtle);
+  border-left: 3px solid var(--jovi-cyan-400);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  margin-bottom: var(--jovi-space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--jovi-space-3);
+}
+
+.jovi-ai-summary-icon {
+  flex-shrink: 0;
+  color: var(--jovi-cyan-400);
+  margin-top: 2px;
+}
+
+.jovi-ai-summary-text {
+  font-size: 0.85rem;
+  color: var(--jovi-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Lista de Sugestões por Eixo */
+.jovi-suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jovi-space-3);
+  margin-bottom: var(--jovi-space-4);
+}
+
+.jovi-suggestion-card {
+  width: 100%;
+  text-align: left;
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-md);
+  padding: var(--jovi-space-3) var(--jovi-space-4);
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  position: relative;
+}
+
+.jovi-suggestion-card:hover {
+  background-color: var(--jovi-bg-overlay);
+  border-color: var(--jovi-border-strong);
+  transform: translateX(3px);
+}
+
+.jovi-suggestion-card.active {
+  background-color: var(--jovi-bg-overlay);
+  border-color: var(--jovi-blue-500);
+  box-shadow: inset 0 0 0 1px var(--jovi-blue-500), 0 6px 18px rgba(0, 71, 255, 0.2);
+  transform: translateX(3px);
+}
+
+.jovi-suggestion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--jovi-space-1);
+}
+
+.jovi-suggestion-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-suggestion-icon {
+  font-size: 0.8rem;
+}
+
+.jovi-suggestion-tag {
+  font-size: 0.75rem;
+  font-weight: var(--jovi-fw-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--jovi-blue-300);
+}
+
+.jovi-suggestion-card.active .jovi-suggestion-tag {
+  color: var(--jovi-cyan-400);
+}
+
+.jovi-impact-pill {
+  font-size: 0.7rem;
+  font-weight: var(--jovi-fw-medium);
+  color: var(--jovi-success);
+  background-color: rgba(34, 197, 94, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--jovi-radius-full);
+}
+
+.jovi-suggestion-text {
+  font-size: 0.85rem;
+  color: var(--jovi-text-primary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Ferramenta Rápida de Troca de Foto */
+.jovi-quick-upload-bar {
+  margin-top: auto;
+  padding-top: var(--jovi-space-4);
+  border-top: 1px solid var(--jovi-border-subtle);
+}
+
+.jovi-btn-ghost {
+  background: transparent;
+  border: 1px dashed var(--jovi-border-strong);
+  color: var(--jovi-text-muted);
+  font-size: 0.8rem;
+  font-weight: var(--jovi-fw-medium);
+  border-radius: var(--jovi-radius-sm);
+  padding: var(--jovi-space-2) var(--jovi-space-3);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--jovi-duration-fast) var(--jovi-ease);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jovi-space-2);
+}
+
+.jovi-btn-ghost:hover {
+  color: var(--jovi-text-primary);
+  border-color: var(--jovi-blue-400);
+  background-color: var(--jovi-bg-overlay);
+}
+
+/* Estado Vazio */
+.jovi-empty-state {
+  display: none;
+  background-color: var(--jovi-bg-elevated);
+  border: 1px solid var(--jovi-border-subtle);
+  border-radius: var(--jovi-radius-lg);
+  padding: var(--jovi-space-10) var(--jovi-space-6);
+  text-align: center;
+}

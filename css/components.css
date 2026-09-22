@@ -10,14 +10,14 @@
 .jovi-navbar-brand {
   display: flex;
   align-items: center;
-  gap: var(--jovi-space-1);
+  gap: var(--jovi-space-2);
   text-decoration: none;
 }
 
 .jovi-navbar-logo {
   display: block;
-  width: 50%;
-  height: 50%;
+  width: 45%;
+  height: 45%;
 }
 
 .jovi-navbar-brand-text {

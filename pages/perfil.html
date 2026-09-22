@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>JOVI - Perfil de Usuário</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Estilo Customizado -->
+  <link rel="stylesheet" href="../../css/perfil.css">
+</head>
+<body>
+
+  <!-- Wrapper simulador de dispositivo -->
+  <div class="device-wrapper">
+    <div class="app-container">
+
+      <!-- Header: Logo JOVI e botão de configurações -->
+      <header class="app-header">
+        <div class="d-flex align-items-center">
+          <img 
+            src="../../assets/jovi-lens-ai-logo.svg" 
+            alt="JOVI" 
+            class="brand-logo-img" 
+            id="joviLogoImg"
+            onerror="handleLogoError(this)"
+          >
+          <div class="brand-logo-fallback d-none" id="joviLogoFallback">
+            J<i class="bi bi-camera-fill"></i>VI
+          </div>
+        </div>
+
+        <button class="btn-header-icon" id="settingsTopBtn" title="Configurações">
+          <i class="bi bi-gear"></i>
+        </button>
+      </header>
+
+      <!-- Seção do Perfil: Foto + Info -->
+      <section class="profile-section">
+        <div class="avatar-wrapper" id="avatarClickTrigger" title="Clique para alterar foto">
+          <div class="avatar-ring">
+            <img 
+              src="../../assets/foto.png" 
+              alt="Alice Carvalho" 
+              class="avatar-img" 
+              id="profileAvatarImg"
+              onerror="handleAvatarError(this)"
+            >
+          </div>
+          <div class="avatar-badge">
+            <i class="bi bi-camera-fill"></i>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <h1 class="profile-name" id="displayProfileName">
+            Alice Carvalho 
+            <i class="bi bi-patch-check-fill verified-icon" title="Conta Verificada"></i>
+          </h1>
+          <p class="profile-bio" id="displayProfileBio">
+            Fotografando histórias, lugares e momentos. 📷
+          </p>
+          <p class="profile-location" id="displayProfileLocation">
+            <i class="bi bi-geo-alt-fill text-primary"></i> <span>São Paulo, SP</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Card de Estatísticas -->
+      <section class="glass-card stats-card">
+        <div class="row text-center align-items-center g-0">
+          <div class="col-4 border-end border-secondary border-opacity-25">
+            <div class="stat-item" id="statPhotosBtn">
+              <i class="bi bi-image stat-icon"></i>
+              <span class="stat-value" id="statPhotosCount">482</span>
+              <span class="stat-label">Fotos</span>
+            </div>
+          </div>
+          <div class="col-4 border-end border-secondary border-opacity-25">
+            <div class="stat-item" id="statLikesBtn">
+              <i class="bi bi-heart stat-icon"></i>
+              <span class="stat-value" id="statLikesCount">1.2K</span>
+              <span class="stat-label">Curtidas</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="stat-item" id="statFollowersBtn">
+              <i class="bi bi-people stat-icon"></i>
+              <span class="stat-value" id="statFollowersCount">756</span>
+              <span class="stat-label">Seguidores</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Botão Editar Perfil -->
+      <button class="btn btn-gradient w-100 mb-4 d-flex align-items-center justify-content-center gap-2" id="editProfileBtn">
+        <i class="bi bi-pencil-square"></i> Editar perfil
+      </button>
+
+      <!-- Galeria de Fotos -->
+      <section class="mb-4">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="bi bi-image"></i> Minhas fotos
+          </h2>
+          <a href="#" class="link-see-all" id="seeAllPhotosBtn">
+            Ver todas <i class="bi bi-chevron-right fs-6"></i>
+          </a>
+        </div>
+
+        <div class="row g-2 photo-grid" id="photoGridContainer">
+          <div class="col-4">
+            <div class="photo-item" onclick="openPhotoModal('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop', 'Pôr do sol na praia', '142 curtidas')">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&auto=format&fit=crop" alt="Pôr do sol praia">
+              <div class="photo-overlay"><i class="bi bi-heart-fill text-white fs-5"></i></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="photo-item" onclick="openPhotoModal('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&auto=format&fit=crop', 'Orla e mar', '98 curtidas')">
+              <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&auto=format&fit=crop" alt="Orla cidade">
+              <div class="photo-overlay"><i class="bi bi-heart-fill text-white fs-5"></i></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="photo-item" onclick="openPhotoModal('https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&auto=format&fit=crop', 'Silhueta nas montanhas', '215 curtidas')">
+              <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=300&auto=format&fit=crop" alt="Montanha no pôr do sol">
+              <div class="photo-overlay"><i class="bi bi-heart-fill text-white fs-5"></i></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="photo-item" onclick="openPhotoModal('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop', 'Coqueiros ao entardecer', '176 curtidas')">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300&auto=format&fit=crop" alt="Coqueiros pôr do sol">
+              <div class="photo-overlay"><i class="bi bi-heart-fill text-white fs-5"></i></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="photo-item" onclick="openPhotoModal('https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format&fit=crop', 'Trapiche e horizonte', '310 curtidas')">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=300&auto=format&fit=crop" alt="Ponte no mar">
+              <div class="photo-overlay"><i class="bi bi-heart-fill text-white fs-5"></i></div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="photo-item" onclick="openPhotoModal('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&auto=format&fit=crop', 'Luzes da baía', '189 curtidas')">
+              <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&auto=format&fit=crop" alt="Vista cidade à noite">
+              <div class="photo-overlay"><i class="bi bi-heart-fill text-white fs-5"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card de Opções -->
+      <section class="glass-card options-card">
+        <div class="menu-item" id="optionPrivacyBtn">
+          <div class="menu-item-left">
+            <i class="bi bi-lock"></i>
+            <span>Privacidade</span>
+          </div>
+          <i class="bi bi-chevron-right menu-item-chevron"></i>
+        </div>
+        <div class="menu-item" id="optionNotificationsBtn">
+          <div class="menu-item-left">
+            <i class="bi bi-bell"></i>
+            <span>Notificações</span>
+          </div>
+          <i class="bi bi-chevron-right menu-item-chevron"></i>
+        </div>
+        <div class="menu-item" id="optionSettingsBtn">
+          <div class="menu-item-left">
+            <i class="bi bi-sliders"></i>
+            <span>Configurações</span>
+          </div>
+          <i class="bi bi-chevron-right menu-item-chevron"></i>
+        </div>
+      </section>
+
+    </div> <!-- End .app-container -->
+
+    <!-- Barra de Navegação Inferior -->
+    <nav class="bottom-nav">
+      <div class="nav-item-custom" data-tab="Explorar">
+        <i class="bi bi-compass"></i>
+        <span>Explorar</span>
+      </div>
+      <div class="nav-item-custom" data-tab="Modelos">
+        <i class="bi bi-grid-1x2"></i>
+        <span>Modelos</span>
+      </div>
+      <div class="nav-item-custom" data-tab="Elementos">
+        <i class="bi bi-people"></i>
+        <span>Elementos</span>
+      </div>
+      <div class="nav-item-custom" data-tab="Texto">
+        <i class="bi bi-type"></i>
+        <span>Texto</span>
+      </div>
+      <div class="nav-item-custom" data-tab="Galeria">
+        <i class="bi bi-camera"></i>
+        <span>Galeria</span>
+      </div>
+      <div class="nav-item-custom active" data-tab="Perfil">
+        <div class="active-pill">
+          <i class="bi bi-person-fill"></i>
+          <span>Perfil</span>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Modal Editar Perfil -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content dark-modal">
+        <div class="modal-header dark-modal-header">
+          <h5 class="modal-title fw-bold" id="editProfileModalLabel"><i class="bi bi-pencil-square text-primary"></i> Editar Perfil</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editProfileForm">
+            <div class="mb-3 text-center">
+              <div class="avatar-wrapper mx-auto mb-2" style="width: 80px; height: 80px;">
+                <div class="avatar-ring">
+                  <img src="../../assets/foto.png" alt="Preview" class="avatar-img" id="modalAvatarPreview" onerror="handleAvatarError(this)">
+                </div>
+              </div>
+              <label for="inputAvatarUrl" class="form-label small text-secondary">URL da Foto de Perfil</label>
+              <input type="text" class="form-control dark-input text-center" id="inputAvatarUrl" value="../../assets/foto.png">
+            </div>
+            <div class="mb-3">
+              <label for="inputName" class="form-label small text-secondary">Nome de Usuário</label>
+              <input type="text" class="form-control dark-input" id="inputName" value="Alice Carvalho" required>
+            </div>
+            <div class="mb-3">
+              <label for="inputBio" class="form-label small text-secondary">Biografia</label>
+              <textarea class="form-control dark-input" id="inputBio" rows="2">Fotografando histórias, lugares e momentos. 📷</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="inputLocation" class="form-label small text-secondary">Localização</label>
+              <input type="text" class="form-control dark-input" id="inputLocation" value="São Paulo, SP">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer dark-modal-footer">
+          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill text-white" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-gradient btn-sm px-4" id="saveProfileBtn">Salvar Alterações</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Photo Lightbox -->
+  <div class="modal fade" id="photoLightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content dark-modal overflow-hidden">
+        <div class="modal-header dark-modal-header py-2">
+          <span class="small fw-semibold text-info" id="photoModalTitle">Visualizar Foto</span>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0 text-center bg-black">
+          <img src="" alt="Foto expandida" id="lightboxImage" class="img-fluid w-100" style="max-height: 400px; object-fit: contain;">
+        </div>
+        <div class="modal-footer dark-modal-footer d-flex justify-content-between">
+          <button class="btn btn-outline-danger btn-sm rounded-pill d-flex align-items-center gap-1" id="likePhotoModalBtn">
+            <i class="bi bi-heart-fill"></i> <span id="photoLikesCountText">120 curtidas</span>
+          </button>
+          <button class="btn btn-primary btn-sm rounded-pill" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script Customizado -->
+  <script src="../../js/perfil.js"></script>
+</body>
+</html>
