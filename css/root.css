@@ -78,6 +78,19 @@
   --jovi-ease: cubic-bezier(0.4, 0, 0.2, 1);
   --jovi-duration-fast: 150ms;
   --jovi-duration-base: 250ms;
+
+  /* ---- Cores de marca de redes sociais (para a tela de Compartilhar) ---- */
+  --social-instagram-start: #f09433;
+  --social-instagram-mid-1: #e6683c;
+  --social-instagram-mid-2: #dc2743;
+  --social-instagram-mid-3: #cc2366;
+  --social-instagram-end:   #bc1888;
+  --social-facebook:  #1877f2;
+  --social-twitter:   #000000;
+  --social-whatsapp:  #25d366;
+  --social-tiktok-dark: #010101;
+  --social-tiktok-cyan: #69c9d0;
+  --social-tiktok-red:  #ee1d52;
 }
 
 /* Reset mínimo apoiado nos tokens acima — aplicar depois do Bootstrap */
